@@ -46,7 +46,7 @@ public:
    void re_hash(size_t newcap) {
  
       std::vector<Val> old_values = std::move(value_);
-
+      
       value_ = std::vector<Val>(newcap);
       cap = 0;
 
@@ -92,7 +92,7 @@ public:
       size_t hash = hasher(name);  
       size_t index = hash & (value_.capacity() - 1);
       size_t start_index = index;
-
+      
       while (isUsed(value_[index])) {
          if (value_[index].hash == hash && value_[index].name == name) {
             return value_[index].value.get();
@@ -141,7 +141,7 @@ void test() {
 
       auto end = std::chrono::high_resolution_clock::now();
       std::chrono::duration<double, std::milli> duration = end - start;
-      std::cout << "std::map approach : " << duration.count() << " ms\n";
+      std::cout << "std::map Approach : " << duration.count() << " ms\n";
    }
 
    // 2. ValContext (Flat Hash Approach)
